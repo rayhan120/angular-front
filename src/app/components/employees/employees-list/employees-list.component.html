@@ -1,0 +1,40 @@
+<div class="container my-5">
+    <h1> Employees</h1>
+
+    <table class="table" *ngIf="employees && employees.length>0">
+        <thead >
+          <tr >
+           
+            <th style="background-color: black; color: aliceblue;" scope="col">Name</th>
+            <th scope="col" style="background-color: black; color: aliceblue;">Email</th>
+            <th scope="col" style="background-color: black; color: aliceblue;" >Phone</th>
+            <th scope="col" style="background-color: black; color: aliceblue;" >Salary</th>
+            <th scope="col" style="background-color: black; color: aliceblue;" >Department</th>
+            <th scope="col" style="background-color: black; color: aliceblue;" >Edit</th>
+            <th scope="col" style="background-color: black; color: aliceblue;" > Delete</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let employee of employees">
+         
+            <td>{{  employee.name }} </td>
+            <td> {{  employee.email }} </td>
+            <td> {{  employee.phone }} </td>
+            <td> {{  employee.salary }} </td>
+            <td> {{  employee.department }} </td>
+            <td>  <a [routerLink]="['/employees','edit',employee.id]" class="btn btn-success">Edit </a> </td>
+            <td>  
+             
+              <a   (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</a>
+              
+      
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+<p *ngIf="!employees || employees.length <= 0 " >No employee found</p>
+
+</div>
